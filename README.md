@@ -19,6 +19,19 @@ Our infrastructure will be the following:
 
 <img width="521" alt="c1" src="https://user-images.githubusercontent.com/115148205/197935178-eae2d1f9-9cba-405f-947d-c925604c0199.PNG">
 
+# Setting up VPC.
+Let’s assemble it in a new main.tf file. First of all, let’s declare VPC, two Public Subnets, Internet Gateway and Route Table (we may take this example as a base):
+
+<img width="862" alt="1" src="https://user-images.githubusercontent.com/115148205/197942198-00ecb773-1830-4f85-bbcd-6a532720527f.PNG">
+<img width="826" alt="2" src="https://user-images.githubusercontent.com/115148205/197942308-c7728a52-8880-4d47-8c22-361e953e5595.PNG">
+<img width="818" alt="3" src="https://user-images.githubusercontent.com/115148205/197942396-d37274be-76a0-4645-8c63-75dfce6f425d.PNG">
+<img width="815" alt="4" src="https://user-images.githubusercontent.com/115148205/197942720-e96a5c57-4ae5-48a3-afe2-da2b661b03df.PNG">
+<img width="812" alt="5" src="https://user-images.githubusercontent.com/115148205/197942862-f4dbb0b7-b968-4bbf-9bbe-22aec6101eb9.PNG">
+<img width="819" alt="6" src="https://user-images.githubusercontent.com/115148205/197943050-216fbc98-297c-4c79-9ee1-ab325ab8471a.PNG">
+<img width="816" alt="7" src="https://user-images.githubusercontent.com/115148205/197943169-929da651-bc5f-4c6c-a762-1651ba58852b.PNG">
+<img width="821" alt="8" src="https://user-images.githubusercontent.com/115148205/197943277-1e6cc7da-b367-4d39-a39b-032c3e7c93c6.PNG">
+
+
 
 
 
