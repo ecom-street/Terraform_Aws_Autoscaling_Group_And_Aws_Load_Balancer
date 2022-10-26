@@ -99,6 +99,19 @@ And try to deploy our infrastructure:
 
 Starting from this point, you can open provided ELB URL in your browser and refresh the page several times to see different local IP addresses of your just launched instances.
 
+In a couple of minutes, you’ll see a fired alarm in CloudWatch:
+
+<img width="801" alt="17" src="https://user-images.githubusercontent.com/115148205/197985524-f1a28fcd-65d4-4e79-9c56-08d86b755748.PNG">
+
+This will cause one of two instances termination process:
+
+<img width="806" alt="18" src="https://user-images.githubusercontent.com/115148205/197985821-2d73f345-4f1b-42ec-bdf4-496189d60e6e.PNG">
+
+# Summary
+In this article, you’ve learned how to set up a dynamic Auto Scaling Group and Load Balancer to distribute traffic to your instances in several Availability Zones.
+I hope this article was helpful. If so, please, help us to spread it to the world!
+Stay tuned!
+
 
 
 
