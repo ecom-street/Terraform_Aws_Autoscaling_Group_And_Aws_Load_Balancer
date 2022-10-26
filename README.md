@@ -77,6 +77,33 @@ If ELB can not reach the instance on the specified port, it will stop sending tr
 
 Now we’re ready to create an Auto Scaling Group by describing it using aws_autoscaling_group resource:
 
+<img width="823" alt="13" src="https://user-images.githubusercontent.com/115148205/197964983-6bfb136d-2709-4ffd-a6c0-5881638bc7c1.PNG">
+
+Here we have the following configuration:
+
+1. There will be minimum one instance to serve the traffic.
+2. Auto Scaling Group will be launched with 2 instances and put each of them in separate Availability Zones in different Subnets.
+3. Auto Scaling Group will get information about instance availability from the ELB.
+4. We’re set up collection for some Cloud Watch metrics to monitor our Auto Scaling Group state.
+5. Each instance launched from this Auto Scaling Group will have Name tag set to web.
+
+Now we are almost ready, let’s get the Load Balancer DNS name as an output from the Terraform infrastructure description:
+
+<img width="806" alt="14" src="https://user-images.githubusercontent.com/115148205/197966566-9c1b85a6-5c4e-46b5-bafa-680492aec681.PNG">
+
+And try to deploy our infrastructure:
+
+<img width="480" alt="15" src="https://user-images.githubusercontent.com/115148205/197968693-eb5fe2b6-37d8-4a2f-b8e0-1fdad6e81019.PNG">
+
+<img width="830" alt="16" src="https://user-images.githubusercontent.com/115148205/197968866-6563e700-3065-45c3-be9f-71af0616e353.PNG">
+
+Starting from this point, you can open provided ELB URL in your browser and refresh the page several times to see different local IP addresses of your just launched instances.
+
+
+
+
+
+
 
 
 
