@@ -48,6 +48,43 @@ special instruction, which is declaring how new launch configuration rules appli
 
 The user-data option is filled with a simple bash-script, which installs the Nginx web server and puts the instance’s local IP address to the index.html file, so we can see it after the instance is up and running
 
+# Load Balancer
+Before we create an Auto Scaling Group, we need to declare a Load Balancer. There are three Load Balances available for you in AWS right now:
+
+# Elastic or Classic Load Balancer (ELB):
+previous generation of Load Balancers in AWS.
+
+# Application Load Balancer (ALB):
+operates on application network layer and provides reach feature set to manage HTTP and HTTPS traffic for your web applications.
+
+# Network Load Balancer (NLB):
+operates on connection layer and capable for handling millions of requests per second.
+
+For simplicity, let’s create an Elastic Load Balancer in front of our EC2 instances (I’ll show how to use other types of them in future articles). To do that, we need to declare aws_elb resource.
+
+<img width="821" alt="11" src="https://user-images.githubusercontent.com/115148205/197948490-68227126-7726-4787-9769-efa3f7dffb5a.PNG">
+<img width="817" alt="12" src="https://user-images.githubusercontent.com/115148205/197948782-9e74621d-b580-4b66-bc8c-94fae32fa791.PNG">
+
+Here we’re setting up Load Balancer name, it’s own Security Group, so we could make traffic rules more restrictive later if we want to.
+
+We’re specifying 2 subnets, where our Load Balancer will look for (listener configuration) launched instances and turned on cross_zone_load_balancing feature, so we could have our instances in different Availability Zones.
+
+And finally, we’ve specified health_check configuration, which determines when Load Balancer should transition instances from healthy to unhealthy state and back depending on its ability to reach HTTP port 80 on the target instance.
+
+If ELB can not reach the instance on the specified port, it will stop sending traffic.
+
+# Auto scaling group
+
+Now we’re ready to create an Auto Scaling Group by describing it using aws_autoscaling_group resource:
+
+
+
+
+
+  
+
+
+
 
 
 
