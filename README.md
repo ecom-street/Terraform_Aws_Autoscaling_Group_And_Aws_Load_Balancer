@@ -24,12 +24,30 @@ Let’s assemble it in a new main.tf file. First of all, let’s declare VPC, tw
 
 <img width="862" alt="1" src="https://user-images.githubusercontent.com/115148205/197942198-00ecb773-1830-4f85-bbcd-6a532720527f.PNG">
 <img width="826" alt="2" src="https://user-images.githubusercontent.com/115148205/197942308-c7728a52-8880-4d47-8c22-361e953e5595.PNG">
-<img width="818" alt="3" src="https://user-images.githubusercontent.com/115148205/197942396-d37274be-76a0-4645-8c63-75dfce6f425d.PNG">
-<img width="815" alt="4" src="https://user-images.githubusercontent.com/115148205/197942720-e96a5c57-4ae5-48a3-afe2-da2b661b03df.PNG">
-<img width="812" alt="5" src="https://user-images.githubusercontent.com/115148205/197942862-f4dbb0b7-b968-4bbf-9bbe-22aec6101eb9.PNG">
-<img width="819" alt="6" src="https://user-images.githubusercontent.com/115148205/197943050-216fbc98-297c-4c79-9ee1-ab325ab8471a.PNG">
-<img width="816" alt="7" src="https://user-images.githubusercontent.com/115148205/197943169-929da651-bc5f-4c6c-a762-1651ba58852b.PNG">
-<img width="821" alt="8" src="https://user-images.githubusercontent.com/115148205/197943277-1e6cc7da-b367-4d39-a39b-032c3e7c93c6.PNG">
+
+Next, we need to describe the Security Group for our web-servers, which will allow HTTP connections to our instances:
+
+<img width="816" alt="9" src="https://user-images.githubusercontent.com/115148205/197945281-f507351a-5e17-4fd5-bd81-dfd8c3d28e78.PNG">
+
+
+# Launch configuration
+
+As soon as we have SecurityGroup, we may describe a Launch Configuration. Think of it like a template containing all instance settings to apply to each new launched by Auto Scaling Group instance. We’re using aws_launch_configuration resource in Terraform to describe it
+
+Most of the parameters should be familiar to you, as we already used them in aws_instance resource.
+
+<img width="807" alt="10" src="https://user-images.githubusercontent.com/115148205/197946813-c7559169-c561-4378-b3ac-4aa5ac90177e.PNG">
+
+# The new ones are a user_data and a lifecycle:
+
+# user_data :- 
+is a special interface created by AWS for EC2 instances automation. Usually this option is filled with scripted instructions to the instance, which need to be executed at the instance boot time. For most of the OS this is done by cloud-init.
+
+# lifecycle :
+special instruction, which is declaring how new launch configuration rules applied during update. We’re using create_before_destroy here to create new instances from a new launch configuration before destroying the old ones. This option commonly used during rolling deployments.
+
+The user-data option is filled with a simple bash-script, which installs the Nginx web server and puts the instance’s local IP address to the index.html file, so we can see it after the instance is up and running
+
 
 
 
